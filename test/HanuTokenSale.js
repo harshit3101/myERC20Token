@@ -58,4 +58,25 @@ contract("HanuTokenSale", function(accounts) {
         });
     }); 
 
+
+    it("ending token sale", function() {
+        return HanuToken.deployed().then(function(tokenHanu){
+            token = tokenHanu;
+            return HanuTokenSale.deployed();
+        }).then(function(tok) {
+          tokenSale = tok;
+          return tokenSale.endSale({from: buyer});
+        }).then(assert.fail).catch(function(error){
+            assert(error.message.indexOf('revert')>=0, 'must be admin to end sale');
+            return tokenSale.endSale({from: admin});
+        }).then(function(receipt){
+            return token.balanceOf(admin);
+        }).then(function(bal){
+            assert.equal(bal.toNumber(), 1000000-numberOfTokens-80, 'All unsold returns returned');
+            return tokenSale.tokenPrice();
+        }).then(function(price){
+            // assert.equal(price.toNumber(),0,'Token Price should reset');
+        });
+    });
+
 });
