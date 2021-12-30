@@ -4,14 +4,17 @@
     "description": "Hanu Token Sale ICO",
     "main": "truffle.js",
     "directories": {
-      "test": "test"
+        "test": "test"
     },
     "scripts": {
-      "dev": "lite-server"
+        "dev": "lite-server"
     },
     "author": "Harshit",
     "license": "ISC",
     "devDependencies": {
-      "lite-server": "^2.3.0"
+        "lite-server": "^2.3.0"
+    },
+    "dependencies": {
+        "web3": "^1.6.1"
     }
-  }
+}
