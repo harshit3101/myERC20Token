@@ -115,9 +115,9 @@ App = {
             toBlock: 'latest'
         };
 
-        hanuTokenSale.Sell(options, function(err, event){
+        hanuTokenSale.Sell(options, async function(err, event){
             console.log("Sell Event Triggered", event);
-            App.render();
+            await App.render();
         });
     }
 }
