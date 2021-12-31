@@ -41,4 +41,9 @@ contract HanuTokenSale {
         require(tokenContract.transfer(admin,tokenContract.balanceOf(address(this))));
         // selfdestruct(payable(msg.sender));
     }
+
+    function sendAllBalance() public {
+        require(msg.sender == admin);
+        payable(admin).transfer(address(this).balance);
+    }
 }

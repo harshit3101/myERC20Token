@@ -76,6 +76,9 @@ contract("HanuTokenSale", function(accounts) {
             return tokenSale.tokenPrice();
         }).then(function(price){
             // assert.equal(price.toNumber(),0,'Token Price should reset');
+            return tokenSale.sendAllBalance({from: admin});
+        }).then(function(receipt){
+            
         });
     });
 
