@@ -22,9 +22,15 @@ App = {
         }
         App.web3 = web3;
         // const accounts = await web3.eth.getAccounts();
+
+        try{
         await App.initContracts();
         await App.listenForEvents();
         await App.render();
+        }catch(e){
+            console.log(e);
+        }
+
     },
 
     initContracts: async function() {
