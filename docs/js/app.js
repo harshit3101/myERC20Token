@@ -12,7 +12,14 @@ App = {
     init: async function() {
         $('form').trigger('reset');
         console.log("Hanu App Initialzed");
-        const web3 = await getWeb3();
+
+        
+        try{
+            var web3 = await getWeb3();
+        }catch(e){
+            alert(e + " .Redirecting to metamask website");
+            window.location = "https://metamask.io/";
+        }
         App.web3 = web3;
         // const accounts = await web3.eth.getAccounts();
         await App.initContracts();
